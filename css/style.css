@@ -1,0 +1,83 @@
+/* ===== Reset y variables ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primario: #4f46e5;
+  --secundario: #06b6d4;
+  --oscuro: #1e1b4b;
+  --claro: #f5f7ff;
+}
+body { font-family: "Segoe UI", Arial, sans-serif; background: var(--claro); color: #222; line-height: 1.6; }
+a { color: var(--primario); }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* ===== Clase utilitaria: limpia de flotantes ===== */
+.limpiar { clear: both; }
+
+/* ===== Cabecera y navegación ===== */
+#cabecera { background: var(--oscuro); padding: 1rem 5%; }
+.logo { color: #fff; font-size: 1.5rem; }
+.logo span { color: var(--secundario); }
+#menu ul { list-style: none; }
+#menu a {
+  display: block; color: #fff; text-decoration: none; padding: .6rem 1rem;
+  border-bottom: 3px solid transparent;
+  transition: color .3s, border-color .3s, background .3s;
+}
+#menu a:hover { color: var(--secundario); border-color: var(--secundario); background: rgba(255,255,255,.08); }
+
+/* ===== Bloques generales ===== */
+#principal { width: 90%; max-width: 1100px; margin: 0 auto; }
+.bloque { padding: 2.5rem 0; border-bottom: 1px solid #dde1f5; }
+.titulo-seccion { color: var(--oscuro); margin-bottom: 1.5rem; border-left: 6px solid var(--primario); padding-left: .8rem; }
+
+/* ===== Inicio (cajas flotantes) ===== */
+.col-izq, .col-der { padding: 1rem; }
+.foto { width: 220px; border-radius: 50%; margin: 0 auto; box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+.animada { animation: flotar 3s ease-in-out infinite; }
+@keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.boton {
+  display: inline-block; margin-top: 1rem; padding: .7rem 1.6rem; background: var(--primario);
+  color: #fff; text-decoration: none; border-radius: 30px;
+  transition: transform .3s, background .3s, box-shadow .3s;
+}
+.boton:hover { background: var(--secundario); transform: scale(1.08); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+
+/* ===== Tarjetas y proyectos ===== */
+.tarjeta, .proyecto, .media-caja { background: #fff; border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.tarjeta { border-top: 4px solid var(--primario); transition: transform .3s; }
+.tarjeta:hover { transform: translateY(-6px); }
+.proyecto { overflow: hidden; }
+.proyecto img { border-radius: 8px; margin-bottom: .6rem; transition: transform .4s; }
+.proyecto:hover img { transform: scale(1.06) rotate(1deg); }
+
+/* ===== Multimedia ===== */
+.video-wrap { position: relative; padding-bottom: 56.25%; height: 0; }
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 8px; }
+.audio-caja { margin-top: 1rem; }
+audio { width: 100%; margin-top: .5rem; }
+
+/* ===== Pie ===== */
+#pie { background: var(--oscuro); color: #fff; text-align: center; padding: 1.2rem; margin-top: 2rem; }
+
+/* ===== Media query 1: móvil (< 768px) ===== */
+@media (max-width: 767px) {
+  #menu a { text-align: center; }
+  .foto { width: 160px; }
+  .col-der { text-align: center; }
+}
+
+/* ===== Media query 2: escritorio (>= 768px) ===== */
+@media (min-width: 768px) {
+  #cabecera { display: flow-root; }
+  .logo { float: left; }
+  #menu { float: right; }
+  #menu li { float: left; }
+  .col-izq { float: left; width: 35%; }
+  .col-der { float: right; width: 65%; }
+  .tarjeta { float: left; width: 31.3%; margin-right: 3%; }
+  .tarjeta:nth-of-type(3) { margin-right: 0; }
+  .proyecto { float: left; width: 31.3%; margin-right: 3%; }
+  .proyecto:nth-of-type(3) { margin-right: 0; }
+  .media-caja { float: left; width: 48.5%; margin-right: 3%; }
+  .media-caja:nth-of-type(2) { margin-right: 0; }
+}
